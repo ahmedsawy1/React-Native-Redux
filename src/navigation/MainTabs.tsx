@@ -42,7 +42,7 @@ export default function MainTabs() {
         }}
       />
       <Tab.Screen
-        name="ProfileScreen"
+        name="Profile"
         component={ProfileScreen}
         options={{
           tabBarIcon: ({color, size}) => (
