@@ -6,6 +6,10 @@ const HomeScreen = () => {
 
   return (
     <View style={styles.cont}>
+      <Text style={{color: 'red'}}>
+        Signed in status: {isSignedIn ? 'yes' : 'no'}
+      </Text>
+
       {isSignedIn ? (
         <View>
           <Text style={styles.text}>Welcome to Home Screen</Text>
