@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 
 const HomeScreen = () => {
   const isSignedIn = useSelector(state => state.userData.isSignedIn)
-
   return (
     <View style={styles.cont}>
       <Text style={{color: 'red'}}>
@@ -18,7 +17,7 @@ const HomeScreen = () => {
       ) : (
         <View>
           <Text style={styles.text}>Please Sign In</Text>
-          {/* <Button title="log in" onPress={() => setIsSignedIn(true)} /> */}
+          <Button title="log in" onPress={() => {}} />
         </View>
       )}
     </View>
