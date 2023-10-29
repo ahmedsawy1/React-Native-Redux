@@ -1,8 +1,9 @@
 import {Button, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
+import { useSelector } from 'react-redux';
 
 const HomeScreen = () => {
-  const [isSignedIn, setIsSignedIn] = useState(false);
+  const isSignedIn = useSelector(state => state.userData.isSignedIn)
 
   return (
     <View style={styles.cont}>
@@ -17,7 +18,7 @@ const HomeScreen = () => {
       ) : (
         <View>
           <Text style={styles.text}>Please Sign In</Text>
-          <Button title="log in" onPress={() => setIsSignedIn(true)} />
+          {/* <Button title="log in" onPress={() => setIsSignedIn(true)} /> */}
         </View>
       )}
     </View>

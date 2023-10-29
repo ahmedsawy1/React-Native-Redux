@@ -1,10 +1,11 @@
 import {Button, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
+import { useSelector } from 'react-redux';
 
 const ProfileScreen = () => {
-  const [isSignedIn, setIsSignedIn] = useState(true);
-  const [userName, setUserName] = useState('Conan');
-
+  const isSignedIn = useSelector(state => state.userData.isSignedIn)
+  const userName = useSelector(state => state.userData.userName)
+  
   return (
     <View style={styles.cont}>
       {isSignedIn ? (
