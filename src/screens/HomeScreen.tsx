@@ -1,9 +1,12 @@
 import {Button, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginAction } from '../store/userActions';
 
 const HomeScreen = () => {
   const isSignedIn = useSelector(state => state.userData.isSignedIn)
+  const dispatch = useDispatch()
+
   return (
     <View style={styles.cont}>
       <Text style={{color: 'red'}}>
@@ -17,7 +20,7 @@ const HomeScreen = () => {
       ) : (
         <View>
           <Text style={styles.text}>Please Sign In</Text>
-          <Button title="log in" onPress={() => {}} />
+          <Button title="log in" onPress={() => dispatch(loginAction())} />
         </View>
       )}
     </View>

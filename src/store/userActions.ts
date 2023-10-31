@@ -16,7 +16,7 @@ export const logoutAction = () => {
 
 export const changeNameAction = (userName: string) => {
     return {
-        type: "LOGOUT",
+        type: "CHANGE_NAME",
         payload: userName
     }
 }
