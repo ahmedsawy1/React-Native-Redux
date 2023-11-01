@@ -1,3 +1,4 @@
+import { LOGIN , CHANGE_NAME ,LOGOUT } from "./types"
 
 const initialState = {
     isSignedIn: false,
@@ -7,13 +8,13 @@ const initialState = {
 export default (state = initialState, {type, payload}) => {
 
     switch (type) {
-        case "LOGIN":
+        case LOGIN:
             return {...state, isSignedIn: payload}
         
-        case "LOGOUT":
+        case LOGOUT:
             return {...state,  isSignedIn: payload}    
 
-        case "CHANGE_NAME":
+        case CHANGE_NAME:
             return {...state , userName: payload}
     }
     

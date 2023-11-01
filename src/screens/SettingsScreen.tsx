@@ -2,12 +2,17 @@ import {Button, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeNameAction } from '../store/userActions';
+import { RootState } from '../store/store';
 
 const SettingsScreen = () => {
   // const [isSignedIn, setIsSignedIn] = useState(true);
   // const [userName, setUserName] = useState('Batman');
-  const isSignedIn = useSelector(state => state.userData.isSignedIn)
-  const userName = useSelector(state => state.userData.userName)
+
+  // const isSignedIn = useSelector((state: RootState) => state.userData.isSignedIn)
+  // const userName = useSelector((state: RootState) => state.userData.userName)
+
+  const {isSignedIn, userName} = useSelector((state: RootState) => state.userData)
+
   const dispatch = useDispatch()
 
   return (
@@ -15,7 +20,7 @@ const SettingsScreen = () => {
       {isSignedIn ? (
         <View>
           <Text style={styles.text}>Your Name: {userName}</Text>
-          <Button title="change" onPress={() => dispatch(changeNameAction("new name"))} />
+          <Button title="change" onPress={() => dispatch(changeNameAction("bbbb"))} />
         </View>
       ) : (
         <View>
