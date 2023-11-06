@@ -1,11 +1,21 @@
 import {Button, StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { loginAction } from '../store/userActions';
+import { getUsersBooks, loginAction } from '../store/userActions';
+import { RootState } from '../store/store';
 
 const HomeScreen = () => {
   const isSignedIn = useSelector(state => state.userData.isSignedIn)
+  const {userBooks} = useSelector((state: RootState) => state.userData)
   const dispatch = useDispatch()
+
+  console.log('==================userBooks==================');
+  console.log(JSON.stringify( userBooks, null, 2));
+  console.log('====================================');
+
+  useEffect(() => {
+    dispatch(getUsersBooks())
+  },[])
 
   return (
     <View style={styles.cont}>

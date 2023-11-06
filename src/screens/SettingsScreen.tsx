@@ -20,7 +20,7 @@ const SettingsScreen = () => {
       {isSignedIn ? (
         <View>
           <Text style={styles.text}>Your Name: {userName}</Text>
-          <Button title="change" onPress={() => dispatch(changeNameAction("bbbb"))} />
+          <Button title="change" onPress={() => dispatch(changeNameAction("test"))} />
         </View>
       ) : (
         <View>
