@@ -1,11 +1,11 @@
-import {Button, StyleSheet, Text, View} from 'react-native';
+import {Button, FlatList, ListRenderItem, StyleSheet, Text, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUsersBooks, loginAction } from '../store/userActions';
 import { RootState } from '../store/store';
+import Book from '../components/Book';
 
 const HomeScreen = () => {
-  const isSignedIn = useSelector(state => state.userData.isSignedIn)
   const {userBooks} = useSelector((state: RootState) => state.userData)
   const dispatch = useDispatch()
 
@@ -13,26 +13,36 @@ const HomeScreen = () => {
   console.log(JSON.stringify( userBooks, null, 2));
   console.log('====================================');
 
-  useEffect(() => {
+  useEffect(() => { 
     dispatch(getUsersBooks())
   },[])
 
+
+  type BookItem = {
+    name_of_book:string,
+    author:string,
+    cover: string,
+    price: string
+  }
+
+const renderItem: ListRenderItem<BookItem> = ({item}) => (
+  <Book
+    author={item.author}
+    coverURL={item.cover}
+    nameOfBook={item.name_of_book}
+    price={item.price}
+    categoryColor='#764abc'
+  />
+);
+
+
   return (
     <View style={styles.cont}>
-      <Text style={{color: 'red'}}>
-        Signed in status: {isSignedIn ? 'yes' : 'no'}
-      </Text>
-
-      {isSignedIn ? (
-        <View>
-          <Text style={styles.text}>Welcome to Home Screen</Text>
-        </View>
-      ) : (
-        <View>
-          <Text style={styles.text}>Please Sign In</Text>
-          <Button title="log in" onPress={() => dispatch(loginAction())} />
-        </View>
-      )}
+      <FlatList 
+        data={userBooks}
+        renderItem={renderItem}
+        keyExtractor={(_, index) => index.toString()}
+      />
     </View>
   );
 };
